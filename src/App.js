@@ -22,8 +22,9 @@ class App extends Component<Props, State> {
     //async/await style
     this.setState({inputValue: input});
     let repoLink = 'https://api.github.com/orgs/';
-    let awaitFetch = await fetch(repoLink + input + '/repos');
-    let responseJson = await awaitFetch.json();
+    let awaitFetch = fetch(repoLink + input + '/repos');
+    let response = await awaitFetch;
+    let responseJson = await response.json();
     let repoArrayPromise = await responseJson.map((repo) => {
       return repo;
     });
